@@ -1,0 +1,7 @@
+include: package:xsoulspace_lints/library.yaml
+
+analyzer:
+  exclude:
+
+  errors:
+    unused_local_variable: info
