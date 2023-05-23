@@ -3,24 +3,24 @@ package dev.xsoulspace.ok_auth
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.content.res.Resources
 import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
-import io.flutter.plugin.common.PluginRegistry.Registrar
 import org.json.JSONException
 import org.json.JSONObject
-
 import ru.ok.android.sdk.Odnoklassniki
 import ru.ok.android.sdk.OkListener
 import ru.ok.android.sdk.util.OkAuthType
 import ru.ok.android.sdk.util.OkScope
 
 /** OkAuthPlugin */
-class OkAuthPlugin : FlutterPlugin, MethodCallHandler {
+class OkAuthPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.ActivityResultListener,
+    ActivityAware {
     /// The MethodChannel that will the communication between Flutter and native Android
     ///
     /// This local reference serves to register the plugin with the Flutter Engine and unregister it
@@ -28,15 +28,15 @@ class OkAuthPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel : MethodChannel
     internal var methodChannelResult: MethodChannel.Result? = null
     private lateinit var okLoginManager: Odnoklassniki
-    var activity: Activity? = null
+    private var activity: Activity? = null
 
 
-    override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(flutterPluginBinding.binaryMessenger, "ok_auth")
         channel.setMethodCallHandler(this)
     }
 
-    override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
+    override fun onMethodCall(call: MethodCall, result: Result) {
         if (call.method == "login") {
             methodChannelResult = result
 
@@ -57,7 +57,7 @@ class OkAuthPlugin : FlutterPlugin, MethodCallHandler {
         }
     }
 
-    override fun onDetachedFromEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
+    override fun onDetachedFromEngine( binding: FlutterPlugin.FlutterPluginBinding) {
         channel.setMethodCallHandler(null)
     }
 
@@ -80,9 +80,7 @@ class OkAuthPlugin : FlutterPlugin, MethodCallHandler {
                 hashmap["access_token"] = token
                 hashmap["secret"] = secretKey
                 hashmap["expires_in"] = expires_in
-                methodChannelResult?.let {
-                    it.success(hashmap)
-                }
+                methodChannelResult?.success(hashmap)
             } catch (exception: JSONException) {
                 onError(exception.localizedMessage)
             }
@@ -90,9 +88,7 @@ class OkAuthPlugin : FlutterPlugin, MethodCallHandler {
         }
 
         override fun onError(error: String?) {
-            methodChannelResult?.let {
-                it.error("UNAVAILABLE", "OK login error", null)
-            }
+            methodChannelResult?.error("UNAVAILABLE", "OK login error", null)
         }
     }
 
@@ -101,5 +97,23 @@ class OkAuthPlugin : FlutterPlugin, MethodCallHandler {
             return okLoginManager.onAuthActivityResult(requestCode, resultCode, data, okAuthCallback)
         }
         return false
+    }
+
+    override fun onAttachedToActivity(binding: ActivityPluginBinding) {
+        activity = binding.activity
+        binding.addActivityResultListener(this)
+    }
+
+    override fun onDetachedFromActivityForConfigChanges() {
+        activity = null;
+    }
+
+    override fun onReattachedToActivityForConfigChanges(binding: ActivityPluginBinding) {
+        activity = binding.activity
+        binding.addActivityResultListener(this)
+    }
+
+    override fun onDetachedFromActivity() {
+        activity = null;
     }
 }
