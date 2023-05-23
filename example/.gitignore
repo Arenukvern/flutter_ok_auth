@@ -15,15 +15,11 @@ migrate_working_dir/
 *.ipr
 *.iws
 .idea/
-**/goldens/macos/
-test/**/failures/
+
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.
-
-# .vscode/
-
-
+#.vscode/
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -46,12 +42,3 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-
-# Dependencies version lock files 
-**.lock 
-
-# symlink to local flutter path
-.fvm/flutter_sdk
-
-# screenshots from `flutter screenshot`
-/*.png

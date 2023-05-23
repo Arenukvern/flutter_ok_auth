@@ -1,21 +1,9 @@
-import 'dart:async';
+import 'ok_auth.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
-import 'models/models.dart';
+export 'models/models.dart';
+export 'ok_auth_method_channel.dart';
+export 'ok_auth_platform_interface.dart';
 
 class OkAuth {
-  OkAuth._();
-  @visibleForTesting
-  static MethodChannel get channel => const MethodChannel('flutter_ok_sdk');
-
-  static Future<OkAuthResponse> login() async {
-    final dynamicData = await channel.invokeMethod('login');
-    final json = Map<String, dynamic>.from(dynamicData);
-    if (json.containsKey('error')) {
-      throw OkAuthErrorException.fromJson(json);
-    }
-    return OkAuthResponse.fromJson(json);
-  }
+  Future<OkAuthResponse> login() => OkAuthPlatform.instance.login();
 }

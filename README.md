@@ -3,11 +3,12 @@
 SDK for odnoklassniki
 
 This plugin is based on:
+
 - Android: [odnoklassniki-android-sdk 2.1.8](https://github.com/odnoklassniki/ok-android-sdk)
 
 ## Installation
 
-First, add  [*`flutter_vk_sdk`*](https://pub.dev/packages/flutter_kk_sdk#-installing-tab-)  as a dependency in [your pubspec.yaml file](https://flutter.io/platform-plugins/).
+First, add [_`flutter_vk_sdk`_](https://pub.dev/packages/flutter_kk_sdk#-installing-tab-) as a dependency in [your pubspec.yaml file](https://flutter.io/platform-plugins/).
 
 ```
 flutter_ok_sdk: ^0.0.1
@@ -16,6 +17,7 @@ flutter_ok_sdk: ^0.0.1
 ### Android
 
 In your android res/values create strings.xml and fill with this examples
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
@@ -26,6 +28,7 @@ In your android res/values create strings.xml and fill with this examples
 ```
 
 In your AndroidManifest.xml add an activity
+
 ```xml
         <activity
                 android:name="ru.ok.android.sdk.OkAuthActivity"
@@ -67,6 +70,7 @@ In info.plist add values
 ```
 
 In your AppDelegate add or append implementation for open url
+
 ```
 import flutter_ok_sdk
 
@@ -75,3 +79,14 @@ override func application(_ app: UIApplication, open url: URL, options: [UIAppli
     return true
 }
 ```
+
+## Getting Started with plugin development
+
+This project is a starting point for a Flutter
+[plug-in package](https://flutter.dev/developing-packages/),
+a specialized package that includes platform-specific implementation code for
+Android and/or iOS.
+
+For help getting started with Flutter development, view the
+[online documentation](https://flutter.dev/docs), which offers tutorials,
+samples, guidance on mobile development, and a full API reference.

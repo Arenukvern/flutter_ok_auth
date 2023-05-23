@@ -1,3 +1,3 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="dev.xsoulspace.flutter_ok_sdk">
+  package="dev.xsoulspace.ok_auth">
 </manifest>

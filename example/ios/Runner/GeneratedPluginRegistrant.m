@@ -6,16 +6,23 @@
 
 #import "GeneratedPluginRegistrant.h"
 
-#if __has_include(<flutter_ok_sdk/FlutterOkSdkPlugin.h>)
-#import <flutter_ok_sdk/FlutterOkSdkPlugin.h>
+#if __has_include(<integration_test/IntegrationTestPlugin.h>)
+#import <integration_test/IntegrationTestPlugin.h>
 #else
-@import flutter_ok_sdk;
+@import integration_test;
+#endif
+
+#if __has_include(<ok_auth/OkAuthPlugin.h>)
+#import <ok_auth/OkAuthPlugin.h>
+#else
+@import ok_auth;
 #endif
 
 @implementation GeneratedPluginRegistrant
 
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
-  [FlutterOkSdkPlugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterOkSdkPlugin"]];
+  [IntegrationTestPlugin registerWithRegistrar:[registry registrarForPlugin:@"IntegrationTestPlugin"]];
+  [OkAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"OkAuthPlugin"]];
 }
 
 @end
