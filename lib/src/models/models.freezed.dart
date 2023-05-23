@@ -386,7 +386,7 @@ OkAuthResponse _$OkAuthResponseFromJson(Map<String, dynamic> json) {
 mixin _$OkAuthResponse {
   String get accessToken => throw _privateConstructorUsedError;
   String get sessionSecretKey => throw _privateConstructorUsedError;
-  @JsonKey(name: 'expires_in')
+  @JsonKey(name: 'expires_in', fromJson: intFromString)
   int get expiresInSeconds => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -404,7 +404,8 @@ abstract class $OkAuthResponseCopyWith<$Res> {
   $Res call(
       {String accessToken,
       String sessionSecretKey,
-      @JsonKey(name: 'expires_in') int expiresInSeconds});
+      @JsonKey(name: 'expires_in', fromJson: intFromString)
+          int expiresInSeconds});
 }
 
 /// @nodoc
@@ -452,7 +453,8 @@ abstract class _$$_OkAuthResponseCopyWith<$Res>
   $Res call(
       {String accessToken,
       String sessionSecretKey,
-      @JsonKey(name: 'expires_in') int expiresInSeconds});
+      @JsonKey(name: 'expires_in', fromJson: intFromString)
+          int expiresInSeconds});
 }
 
 /// @nodoc
@@ -494,7 +496,8 @@ class _$_OkAuthResponse implements _OkAuthResponse {
   const _$_OkAuthResponse(
       {required this.accessToken,
       required this.sessionSecretKey,
-      @JsonKey(name: 'expires_in') required this.expiresInSeconds});
+      @JsonKey(name: 'expires_in', fromJson: intFromString)
+          required this.expiresInSeconds});
 
   factory _$_OkAuthResponse.fromJson(Map<String, dynamic> json) =>
       _$$_OkAuthResponseFromJson(json);
@@ -504,7 +507,7 @@ class _$_OkAuthResponse implements _OkAuthResponse {
   @override
   final String sessionSecretKey;
   @override
-  @JsonKey(name: 'expires_in')
+  @JsonKey(name: 'expires_in', fromJson: intFromString)
   final int expiresInSeconds;
 
   @override
@@ -546,10 +549,10 @@ class _$_OkAuthResponse implements _OkAuthResponse {
 
 abstract class _OkAuthResponse implements OkAuthResponse {
   const factory _OkAuthResponse(
-          {required final String accessToken,
-          required final String sessionSecretKey,
-          @JsonKey(name: 'expires_in') required final int expiresInSeconds}) =
-      _$_OkAuthResponse;
+      {required final String accessToken,
+      required final String sessionSecretKey,
+      @JsonKey(name: 'expires_in', fromJson: intFromString)
+          required final int expiresInSeconds}) = _$_OkAuthResponse;
 
   factory _OkAuthResponse.fromJson(Map<String, dynamic> json) =
       _$_OkAuthResponse.fromJson;
@@ -559,7 +562,7 @@ abstract class _OkAuthResponse implements OkAuthResponse {
   @override
   String get sessionSecretKey;
   @override
-  @JsonKey(name: 'expires_in')
+  @JsonKey(name: 'expires_in', fromJson: intFromString)
   int get expiresInSeconds;
   @override
   @JsonKey(ignore: true)

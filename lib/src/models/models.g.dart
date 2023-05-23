@@ -22,7 +22,7 @@ _$_OkAuthResponse _$$_OkAuthResponseFromJson(Map<String, dynamic> json) =>
     _$_OkAuthResponse(
       accessToken: json['access_token'] as String,
       sessionSecretKey: json['session_secret_key'] as String,
-      expiresInSeconds: json['expires_in'] as int,
+      expiresInSeconds: intFromString(json['expires_in'] as String),
     );
 
 Map<String, dynamic> _$$_OkAuthResponseToJson(_$_OkAuthResponse instance) =>

@@ -11,8 +11,14 @@ class OkAuthResponse with _$OkAuthResponse {
   const factory OkAuthResponse({
     required final String accessToken,
     required final String sessionSecretKey,
-    @JsonKey(name: 'expires_in') required final int expiresInSeconds,
+    @JsonKey(
+      name: 'expires_in',
+      fromJson: intFromString,
+    )
+    required final int expiresInSeconds,
   }) = _OkAuthResponse;
   factory OkAuthResponse.fromJson(final Map<String, dynamic> json) =>
       _$OkAuthResponseFromJson(json);
 }
+
+int intFromString(final String value) => int.tryParse(value) ?? 0;
