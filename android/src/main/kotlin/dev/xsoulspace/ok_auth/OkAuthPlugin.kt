@@ -50,7 +50,7 @@ class OkAuthPlugin : FlutterPlugin, MethodCallHandler, PluginRegistry.ActivityRe
             ok.requestAuthorization(
                 activity!!,
                 getResourceFromContext(activity!!.applicationContext, "ok_redirect_url"),
-                OkAuthType.WEBVIEW_OAUTH,
+                OkAuthType.ANY,
                 OkScope.VALUABLE_ACCESS
             )
 

@@ -18,6 +18,7 @@ sealed class OkAuthException with _$OkAuthException implements Exception {
     // ignore: avoid_annotating_with_dynamic
     final dynamic error,
   }) = OkAuthCancelException;
+  // ignore: prefer_constructors_over_static_methods
   static OkAuthErrorException errorFromJson(final Map<String, dynamic> json) =>
       OkAuthErrorException(error: json);
 }
