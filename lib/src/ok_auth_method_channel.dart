@@ -12,12 +12,15 @@ final class MethodChannelOkAuth extends OkAuthPlatform {
 
   @override
   Future<OkAuthResponse> login() async {
-    final json = await methodChannel.invokeMethod<Map<String, dynamic>>(
+    final dynamicJson = await methodChannel.invokeMethod<Map>(
       'login',
     );
-    if (json == null) throw const OkAuthErrorException();
-    if (json.containsKey('error')) {
-      throw OkAuthErrorException.fromJson(json);
+    if (dynamicJson == null) throw const OkAuthErrorException();
+    final json = Map.castFrom<dynamic, dynamic, String, dynamic>(dynamicJson);
+    if (dynamicJson.containsKey('error')) {
+      throw OkAuthException.errorFromJson(json);
+    } else if (dynamicJson.containsKey('cancel')) {
+      throw const OkAuthCancelException();
     }
     return OkAuthResponse.fromJson(json);
   }

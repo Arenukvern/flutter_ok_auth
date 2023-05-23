@@ -14,35 +14,67 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-OkAuthErrorException _$OkAuthErrorExceptionFromJson(Map<String, dynamic> json) {
-  return _OkAuthErrorException.fromJson(json);
-}
-
 /// @nodoc
-mixin _$OkAuthErrorException {
+mixin _$OkAuthException {
 // ignore: avoid_annotating_with_dynamic
   dynamic get error => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic error) error,
+    required TResult Function(dynamic error) cancel,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(dynamic error)? error,
+    TResult? Function(dynamic error)? cancel,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic error)? error,
+    TResult Function(dynamic error)? cancel,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OkAuthErrorException value) error,
+    required TResult Function(OkAuthCancelException value) cancel,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OkAuthErrorException value)? error,
+    TResult? Function(OkAuthCancelException value)? cancel,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OkAuthErrorException value)? error,
+    TResult Function(OkAuthCancelException value)? cancel,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $OkAuthErrorExceptionCopyWith<OkAuthErrorException> get copyWith =>
+  $OkAuthExceptionCopyWith<OkAuthException> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $OkAuthErrorExceptionCopyWith<$Res> {
-  factory $OkAuthErrorExceptionCopyWith(OkAuthErrorException value,
-          $Res Function(OkAuthErrorException) then) =
-      _$OkAuthErrorExceptionCopyWithImpl<$Res, OkAuthErrorException>;
+abstract class $OkAuthExceptionCopyWith<$Res> {
+  factory $OkAuthExceptionCopyWith(
+          OkAuthException value, $Res Function(OkAuthException) then) =
+      _$OkAuthExceptionCopyWithImpl<$Res, OkAuthException>;
   @useResult
   $Res call({dynamic error});
 }
 
 /// @nodoc
-class _$OkAuthErrorExceptionCopyWithImpl<$Res,
-        $Val extends OkAuthErrorException>
-    implements $OkAuthErrorExceptionCopyWith<$Res> {
-  _$OkAuthErrorExceptionCopyWithImpl(this._value, this._then);
+class _$OkAuthExceptionCopyWithImpl<$Res, $Val extends OkAuthException>
+    implements $OkAuthExceptionCopyWith<$Res> {
+  _$OkAuthExceptionCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -64,22 +96,22 @@ class _$OkAuthErrorExceptionCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_OkAuthErrorExceptionCopyWith<$Res>
-    implements $OkAuthErrorExceptionCopyWith<$Res> {
-  factory _$$_OkAuthErrorExceptionCopyWith(_$_OkAuthErrorException value,
-          $Res Function(_$_OkAuthErrorException) then) =
-      __$$_OkAuthErrorExceptionCopyWithImpl<$Res>;
+abstract class _$$OkAuthErrorExceptionCopyWith<$Res>
+    implements $OkAuthExceptionCopyWith<$Res> {
+  factory _$$OkAuthErrorExceptionCopyWith(_$OkAuthErrorException value,
+          $Res Function(_$OkAuthErrorException) then) =
+      __$$OkAuthErrorExceptionCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({dynamic error});
 }
 
 /// @nodoc
-class __$$_OkAuthErrorExceptionCopyWithImpl<$Res>
-    extends _$OkAuthErrorExceptionCopyWithImpl<$Res, _$_OkAuthErrorException>
-    implements _$$_OkAuthErrorExceptionCopyWith<$Res> {
-  __$$_OkAuthErrorExceptionCopyWithImpl(_$_OkAuthErrorException _value,
-      $Res Function(_$_OkAuthErrorException) _then)
+class __$$OkAuthErrorExceptionCopyWithImpl<$Res>
+    extends _$OkAuthExceptionCopyWithImpl<$Res, _$OkAuthErrorException>
+    implements _$$OkAuthErrorExceptionCopyWith<$Res> {
+  __$$OkAuthErrorExceptionCopyWithImpl(_$OkAuthErrorException _value,
+      $Res Function(_$OkAuthErrorException) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +119,7 @@ class __$$_OkAuthErrorExceptionCopyWithImpl<$Res>
   $Res call({
     Object? error = freezed,
   }) {
-    return _then(_$_OkAuthErrorException(
+    return _then(_$OkAuthErrorException(
       error: freezed == error
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -99,11 +131,8 @@ class __$$_OkAuthErrorExceptionCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class _$_OkAuthErrorException implements _OkAuthErrorException {
-  const _$_OkAuthErrorException({this.error});
-
-  factory _$_OkAuthErrorException.fromJson(Map<String, dynamic> json) =>
-      _$$_OkAuthErrorExceptionFromJson(json);
+class _$OkAuthErrorException implements OkAuthErrorException {
+  const _$OkAuthErrorException({this.error});
 
 // ignore: avoid_annotating_with_dynamic
   @override
@@ -111,18 +140,17 @@ class _$_OkAuthErrorException implements _OkAuthErrorException {
 
   @override
   String toString() {
-    return 'OkAuthErrorException(error: $error)';
+    return 'OkAuthException.error(error: $error)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_OkAuthErrorException &&
+            other is _$OkAuthErrorException &&
             const DeepCollectionEquality().equals(other.error, error));
   }
 
-  @JsonKey(ignore: true)
   @override
   int get hashCode =>
       Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
@@ -130,31 +158,223 @@ class _$_OkAuthErrorException implements _OkAuthErrorException {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_OkAuthErrorExceptionCopyWith<_$_OkAuthErrorException> get copyWith =>
-      __$$_OkAuthErrorExceptionCopyWithImpl<_$_OkAuthErrorException>(
+  _$$OkAuthErrorExceptionCopyWith<_$OkAuthErrorException> get copyWith =>
+      __$$OkAuthErrorExceptionCopyWithImpl<_$OkAuthErrorException>(
           this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$_OkAuthErrorExceptionToJson(
-      this,
-    );
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic error) error,
+    required TResult Function(dynamic error) cancel,
+  }) {
+    return error(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(dynamic error)? error,
+    TResult? Function(dynamic error)? cancel,
+  }) {
+    return error?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic error)? error,
+    TResult Function(dynamic error)? cancel,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OkAuthErrorException value) error,
+    required TResult Function(OkAuthCancelException value) cancel,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OkAuthErrorException value)? error,
+    TResult? Function(OkAuthCancelException value)? cancel,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OkAuthErrorException value)? error,
+    TResult Function(OkAuthCancelException value)? cancel,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
   }
 }
 
-abstract class _OkAuthErrorException
-    implements OkAuthErrorException, Exception {
-  const factory _OkAuthErrorException({final dynamic error}) =
-      _$_OkAuthErrorException;
-
-  factory _OkAuthErrorException.fromJson(Map<String, dynamic> json) =
-      _$_OkAuthErrorException.fromJson;
+abstract class OkAuthErrorException implements OkAuthException, Exception {
+  const factory OkAuthErrorException({final dynamic error}) =
+      _$OkAuthErrorException;
 
   @override // ignore: avoid_annotating_with_dynamic
   dynamic get error;
   @override
   @JsonKey(ignore: true)
-  _$$_OkAuthErrorExceptionCopyWith<_$_OkAuthErrorException> get copyWith =>
+  _$$OkAuthErrorExceptionCopyWith<_$OkAuthErrorException> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OkAuthCancelExceptionCopyWith<$Res>
+    implements $OkAuthExceptionCopyWith<$Res> {
+  factory _$$OkAuthCancelExceptionCopyWith(_$OkAuthCancelException value,
+          $Res Function(_$OkAuthCancelException) then) =
+      __$$OkAuthCancelExceptionCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({dynamic error});
+}
+
+/// @nodoc
+class __$$OkAuthCancelExceptionCopyWithImpl<$Res>
+    extends _$OkAuthExceptionCopyWithImpl<$Res, _$OkAuthCancelException>
+    implements _$$OkAuthCancelExceptionCopyWith<$Res> {
+  __$$OkAuthCancelExceptionCopyWithImpl(_$OkAuthCancelException _value,
+      $Res Function(_$OkAuthCancelException) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(_$OkAuthCancelException(
+      error: freezed == error
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as dynamic,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OkAuthCancelException implements OkAuthCancelException {
+  const _$OkAuthCancelException({this.error});
+
+// ignore: avoid_annotating_with_dynamic
+  @override
+  final dynamic error;
+
+  @override
+  String toString() {
+    return 'OkAuthException.cancel(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OkAuthCancelException &&
+            const DeepCollectionEquality().equals(other.error, error));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OkAuthCancelExceptionCopyWith<_$OkAuthCancelException> get copyWith =>
+      __$$OkAuthCancelExceptionCopyWithImpl<_$OkAuthCancelException>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(dynamic error) error,
+    required TResult Function(dynamic error) cancel,
+  }) {
+    return cancel(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(dynamic error)? error,
+    TResult? Function(dynamic error)? cancel,
+  }) {
+    return cancel?.call(this.error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(dynamic error)? error,
+    TResult Function(dynamic error)? cancel,
+    required TResult orElse(),
+  }) {
+    if (cancel != null) {
+      return cancel(this.error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(OkAuthErrorException value) error,
+    required TResult Function(OkAuthCancelException value) cancel,
+  }) {
+    return cancel(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(OkAuthErrorException value)? error,
+    TResult? Function(OkAuthCancelException value)? cancel,
+  }) {
+    return cancel?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(OkAuthErrorException value)? error,
+    TResult Function(OkAuthCancelException value)? cancel,
+    required TResult orElse(),
+  }) {
+    if (cancel != null) {
+      return cancel(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OkAuthCancelException implements OkAuthException, Exception {
+  const factory OkAuthCancelException({final dynamic error}) =
+      _$OkAuthCancelException;
+
+  @override // ignore: avoid_annotating_with_dynamic
+  dynamic get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$OkAuthCancelExceptionCopyWith<_$OkAuthCancelException> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -6,14 +6,14 @@ part of 'models.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_OkAuthErrorException _$$_OkAuthErrorExceptionFromJson(
+_$OkAuthErrorException _$$OkAuthErrorExceptionFromJson(
         Map<String, dynamic> json) =>
-    _$_OkAuthErrorException(
+    _$OkAuthErrorException(
       error: json['error'],
     );
 
-Map<String, dynamic> _$$_OkAuthErrorExceptionToJson(
-        _$_OkAuthErrorException instance) =>
+Map<String, dynamic> _$$OkAuthErrorExceptionToJson(
+        _$OkAuthErrorException instance) =>
     <String, dynamic>{
       'error': instance.error,
     };

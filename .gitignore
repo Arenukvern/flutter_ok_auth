@@ -31,3 +31,5 @@ build/
 android/gradle/wrapper/gradle-wrapper.jar
 android/gradlew
 android/gradlew.bat
+# example/android/app/src/main/res/values/strings.xml
+example/android/local.properties

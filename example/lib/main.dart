@@ -29,11 +29,17 @@ class _MyAppState extends State<MyApp> {
     // We also handle the message potentially returning null.
     try {
       _response = await _okAuthPlugin.login();
-    } on OkAuthErrorException catch (e) {
-      _response = null;
-      print(e);
-    }
+    } on OkAuthException catch (e) {
+      switch (e) {
+        case OkAuthErrorException():
+          print(e);
 
+          break;
+        case OkAuthCancelException():
+          return;
+      }
+    }
+    _response = null;
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.

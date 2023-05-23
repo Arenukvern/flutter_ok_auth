@@ -4,15 +4,20 @@ part of 'models.dart';
 
 /// https://apiok.ru/ext/oauth/client
 @freezed
-class OkAuthErrorException with _$OkAuthErrorException implements Exception {
+sealed class OkAuthException with _$OkAuthException implements Exception {
   @JsonSerializable(
     fieldRename: FieldRename.snake,
   )
   @Implements<Exception>()
-  const factory OkAuthErrorException({
+  const factory OkAuthException.error({
     // ignore: avoid_annotating_with_dynamic
     final dynamic error,
-  }) = _OkAuthErrorException;
-  factory OkAuthErrorException.fromJson(final Map<String, dynamic> json) =>
-      _$OkAuthErrorExceptionFromJson(json);
+  }) = OkAuthErrorException;
+  @Implements<Exception>()
+  const factory OkAuthException.cancel({
+    // ignore: avoid_annotating_with_dynamic
+    final dynamic error,
+  }) = OkAuthCancelException;
+  static OkAuthErrorException errorFromJson(final Map<String, dynamic> json) =>
+      OkAuthErrorException(error: json);
 }
