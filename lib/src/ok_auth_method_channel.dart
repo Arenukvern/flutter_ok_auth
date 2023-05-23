@@ -34,6 +34,10 @@ final class MethodChannelOkAuth extends OkAuthPlatform {
         case 'cancel':
           throw const OkAuthCancelException();
       }
+      switch (e.details) {
+        case 'access_denied':
+          throw const OkAuthCancelException();
+      }
       rethrow;
     }
   }
