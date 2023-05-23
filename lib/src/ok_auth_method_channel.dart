@@ -24,6 +24,8 @@ final class MethodChannelOkAuth extends OkAuthPlatform {
       return OkAuthResponse.fromJson(json);
     } on PlatformException catch (e) {
       switch (e.code) {
+        case 'error' when e.details == 'access_denied':
+          throw const OkAuthCancelException();
         case 'error':
           throw OkAuthException.errorFromJson(
             {
