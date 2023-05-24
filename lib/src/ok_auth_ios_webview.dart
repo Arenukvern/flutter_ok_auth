@@ -1,8 +1,10 @@
 import 'package:flutter_web_auth_2/flutter_web_auth_2.dart';
 
 import 'models/models.dart';
+import 'ok_auth_helpers.dart';
 
 class OkAuthIosImpl {
+  final _helpers = OkAuthHelpers();
   Future<OkAuthResponse> login({
     required final String appId,
   }) async {
@@ -31,10 +33,6 @@ class OkAuthIosImpl {
     final response = Uri.splitQueryString(
       result.replaceFirst('$redirectUri#', ''),
     );
-    if (response.containsKey('error')) {
-      throw OkAuthException.error(error: response);
-    }
-
-    return OkAuthResponse.fromJson(response);
+    return _helpers.handleLoginJsonResponse(response);
   }
 }
