@@ -42,8 +42,8 @@ flutter:
       android:
         package: dev.xsoulspace.ok_auth
         pluginClass: OkAuthPlugin
-      ios:
-        pluginClass: OkAuthPlugin
+      # ios:
+      #   pluginClass: OkAuthPlugin
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg

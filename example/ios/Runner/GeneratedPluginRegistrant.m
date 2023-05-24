@@ -18,12 +18,6 @@
 @import integration_test;
 #endif
 
-#if __has_include(<ok_auth/OkAuthPlugin.h>)
-#import <ok_auth/OkAuthPlugin.h>
-#else
-@import ok_auth;
-#endif
-
 #if __has_include(<url_launcher_ios/FLTURLLauncherPlugin.h>)
 #import <url_launcher_ios/FLTURLLauncherPlugin.h>
 #else
@@ -35,7 +29,6 @@
 + (void)registerWithRegistry:(NSObject<FlutterPluginRegistry>*)registry {
   [FlutterWebAuth2Plugin registerWithRegistrar:[registry registrarForPlugin:@"FlutterWebAuth2Plugin"]];
   [IntegrationTestPlugin registerWithRegistrar:[registry registrarForPlugin:@"IntegrationTestPlugin"]];
-  [OkAuthPlugin registerWithRegistrar:[registry registrarForPlugin:@"OkAuthPlugin"]];
   [FLTURLLauncherPlugin registerWithRegistrar:[registry registrarForPlugin:@"FLTURLLauncherPlugin"]];
 }
 
